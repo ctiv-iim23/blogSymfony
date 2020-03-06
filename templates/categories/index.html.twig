@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CategoriesController!{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Mon premier titre</h1>
+        </div>
+        <ul>
+            {% for categorie in categories %}
+                <li>{{categorie.id}}: {{categorie.name}}</li>
+            {% endfor %}
+        </ul>
+        {# <form action="{{path('home')}}" method="post">
+            <input type="text" name="name" placeholder="Nom de la catégorie">
+            <button type="submit" class="btn btn-primary">Envoyer</button>
+        </form> #}
+        {{form(formulaireCategories)}}
+    </div>
+{% endblock %}
