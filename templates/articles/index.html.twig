@@ -10,6 +10,8 @@
                 <h5 class="card-title">{{article.title}}</h5>
                 <p class="card-text">{{article.description}}</p>
                 <p class="card-text">{{article.createdAt | date('d/m/Y H:i:s')}}</p>
+                <a href="{{path('updateArticle', {id: article.id})}}"><button class="btn btn-warning">Modifier</button></a>
+                <a href="{{path('removeArticle', {id: article.id})}}"><button class="btn btn-danger">Supprimer</button></a>
 
             </div>
         </div>
@@ -17,9 +19,13 @@
     </div>
     <div class="container mt-5">
         {{ form_start(articleForm) }}
-            {{form_row(articleForm.title)}}
-            {{ form_widget(articleForm) }}
-            {# {{ form_rest(form) }} #}
+        {{form_row(articleForm.title)}}
+        {{form_row(articleForm.description)}}
+            <select name="categorieId" id="">
+                {% for categorie in categories %}
+                    <option value="{{ categorie.id }}">{{categorie.name}}</option>
+                {% endfor %}
+            </select>
             <button type="submit">Envoyer</button>
         {{ form_end(articleForm) }}
     </div>
